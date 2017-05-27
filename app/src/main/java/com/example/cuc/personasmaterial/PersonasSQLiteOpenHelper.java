@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 
 public class PersonasSQLiteOpenHelper extends SQLiteOpenHelper {
-    private String sql="CREATE TABLE Personas(foto text, cedula text, nombre text, apellido text)";
+    private String sql="CREATE TABLE Personas(uuid, urlfoto text, cedula text, nombre text, apellido text, idfoto text)";
     private static int version=1;
 
     public PersonasSQLiteOpenHelper(Context contexto, String name, SQLiteDatabase.CursorFactory factory){

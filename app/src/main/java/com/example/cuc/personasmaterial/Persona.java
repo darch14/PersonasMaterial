@@ -3,31 +3,57 @@ package com.example.cuc.personasmaterial;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.UUID;
+
 /**
  * Created by CUC on 20/05/2017.
  */
 
 public class Persona {
-    private String foto;
+    private String uuid;
+    private String urlfoto;
     private String cedula;
     private String nombre;
     private String apellido;
+    private String idfoto;
+
+    public Persona(){
+
+    }
 
 
-    public Persona(String foto, String cedula, String nombre, String apellido) {
-        this.foto = foto;
+    public Persona(String urlfoto, String cedula, String nombre, String apellido, String idfoto) {
+        this.uuid = UUID.randomUUID().toString();
+        this.urlfoto = urlfoto;
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
-
+        this.idfoto = idfoto;
     }
 
-    public String getFoto() {
-        return foto;
+    public Persona(String uuid, String urlfoto, String cedula, String nombre, String apellido, String idfoto) {
+        this.uuid = uuid;
+        this.urlfoto = urlfoto;
+        this.cedula = cedula;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.idfoto = idfoto;
     }
 
-    public void setFoto(String foto) {
-        this.foto = foto;
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }
+
+    public String getUrlfoto() {
+        return urlfoto;
+    }
+
+    public void setUrlfoto(String urlfoto) {
+        this.urlfoto = urlfoto;
     }
 
     public String getCedula() {
@@ -54,6 +80,13 @@ public class Persona {
         this.apellido = apellido;
     }
 
+    public String getIdfoto() {
+        return idfoto;
+    }
+
+    public void setIdfoto(String idfoto) {
+        this.idfoto = idfoto;
+    }
 
     public void guardar(Context contexto){
         //Declarar variables
@@ -66,10 +99,12 @@ public class Persona {
 
         //Insertar forma 1
         sql="INSERT INTO Personas values('"
-                +this.getFoto()+"','"
+                +this.getUuid()+"','"
+                +this.getUrlfoto()+"','"
                 +this.getCedula()+"','"
                 +this.getNombre()+"','"
-                +this.getApellido()+"')";
+                +this.getApellido()+"','"
+                +this.getIdfoto()+"')";
 
         db.execSQL(sql);
 
